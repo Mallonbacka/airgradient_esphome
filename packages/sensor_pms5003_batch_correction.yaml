@@ -29,9 +29,10 @@ sensor:
     name: "PM 2.5"
     id: pm_2_5
     device_class: pm25
-    filters:
-      - skip_initial: 1
-    update_interval: $pm_update_interval
+    update_interval: "20s"
+    unit_of_measurement: µg/m³
+    accuracy_decimals: 2
+    state_class: measurement
     lambda: |-
       float scaling_factor = 0.03525;
       float calibrated_low = scaling_factor * id(pm_0_3um).state;
